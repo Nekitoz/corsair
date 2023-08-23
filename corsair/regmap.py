@@ -168,19 +168,19 @@ class RegisterMap():
 
     def read_json(self, path):
         """Read register map from JSON file."""
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding="utf-8") as f:
             data = json.load(f)
             self._fill_from_file_data(data['regmap'])
 
     def read_yaml(self, path):
         """Read register map from YAML file."""
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding="utf-8") as f:
             data = yaml.safe_load(f)
             self._fill_from_file_data(data['regmap'])
 
     def read_txt(self, path):
         """Read register map from text file."""
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding="utf-8") as f:
             raw_lines = f.readlines()
             data = []
             reg_start_idx = None

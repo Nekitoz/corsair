@@ -90,7 +90,7 @@ class Jinja2():
         rendered_text = self.render(template, vars, templates_path)
         # save
         utils.create_dirs(self.path)
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(rendered_text)
 
 
@@ -142,7 +142,7 @@ class Json(Generator):
         data = {'regmap': list(self.rmap.as_dict().values())}
         # dump
         utils.create_dirs(self.path)
-        with open(self.path, 'w') as f:
+        with open(self.path, 'w', encoding="utf-8") as f:
             json.dump(data, f, indent=4)
 
 
@@ -166,7 +166,7 @@ class Yaml(Generator):
         data = {'regmap': list(self.rmap.as_dict().values())}
         # dump
         utils.create_dirs(self.path)
-        with open(self.path, 'w') as f:
+        with open(self.path, 'w', encoding="utf-8") as f:
             yaml.Dumper.ignore_aliases = lambda *args: True  # hack to disable aliases
             yaml.dump(data, f, indent=4, default_flow_style=False, sort_keys=False)
 
@@ -226,7 +226,7 @@ class Txt(Generator):
                              col_width[i], col_access[i], col_hardware[i], col_reset[i], col_description[i]))
         # save to file
         utils.create_dirs(self.path)
-        with open(self.path, 'w') as f:
+        with open(self.path, 'w', encoding="utf-8") as f:
             f.writelines(out_lines)
 
 

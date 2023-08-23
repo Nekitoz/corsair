@@ -25,7 +25,7 @@ def read_csrconfig(cfgpath):
     """Parse Corsair configuration file. Return two dictionaries: global configuration and targets."""
     # open config file
     cfg = configparser.ConfigParser()
-    cfg.read_file(open(cfgpath, 'r'))
+    cfg.read_file(open(cfgpath, 'r', encoding="utf-8"))
 
     # parse global config
     globcfg = default_globcfg()
@@ -59,7 +59,7 @@ def write_csrconfig(cfgpath, globcfg, targets):
     data = {'globcfg': globcfg}
     data.update(targets)
     cfg.read_dict(data)
-    cfg.write(open(cfgpath, 'w'))
+    cfg.write(open(cfgpath, 'w', encoding="utf-8"))
 
 
 def validate_globcfg(globcfg):
